@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Trinity Grade 6 Piano</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
+    <meta name="theme-color" content="#121212">
+</head>
+<body>
+    <nav class="navbar">
+        <button id="nav-exam" class="active">Practice Exam</button>
+        <button id="nav-analytics">Analytics</button>
+    </nav>
+
+    <!-- EXAM VIEW -->
+    <main id="view-exam" class="view active">
+        <div id="prompt-container">
+            <h1 id="prompt-text">Press "Next Request" to begin</h1>
+            <p id="prompt-subtext"></p>
+        </div>
+        
+        <div class="controls">
+            <button id="btn-next" class="btn-primary">Next Request</button>
+        </div>
+
+        <div id="scoring-section" class="hidden">
+            <p>Score your performance:</p>
+            <div class="score-grid">
+                <button class="score-btn" data-score="1">1</button>
+                <button class="score-btn" data-score="2">2</button>
+                <button class="score-btn" data-score="3">3</button>
+                <button class="score-btn" data-score="4">4</button>
+                <button class="score-btn" data-score="5">5</button>
+                <button class="score-btn" data-score="6">6</button>
+                <button class="score-btn" data-score="7">7</button>
+                <button class="score-btn" data-score="8">8</button>
+                <button class="score-btn" data-score="9">9</button>
+                <button class="score-btn" data-score="10">10</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- ANALYTICS VIEW -->
+    <main id="view-analytics" class="view hidden">
+        <h2>Performance Analytics</h2>
+        <div class="stat-card">
+            <h3>Overall Average</h3>
+            <p id="stat-overall" class="stat-large">-</p>
+        </div>
+        
+        <div class="stat-grid">
+            <div class="stat-card">
+                <h3>Articulation</h3>
+                <p>Legato: <span id="stat-legato">-</span></p>
+                <p>Staccato: <span id="stat-staccato">-</span></p>
+            </div>
+            <div class="stat-card">
+                <h3>Dynamics</h3>
+                <p>Forte (f): <span id="stat-forte">-</span></p>
+                <p>Mezzo-forte (mf): <span id="stat-mf">-</span></p>
+                <p>Piano (p): <span id="stat-piano">-</span></p>
+            </div>
+            <div class="stat-card">
+                <h3>Category</h3>
+                <p>Scales: <span id="stat-scales">-</span></p>
+                <p>Arpeggios: <span id="stat-arps">-</span></p>
+                <p>Chromatics: <span id="stat-chromatics">-</span></p>
+            </div>
+        </div>
+
+        <div class="stat-card" style="margin-top: 15px;">
+            <h3>Itemized Mastery</h3>
+            <p style="font-size: 12px; color: #aaa; margin-bottom: 10px;">(Sorted weakest to strongest)</p>
+            <div id="stat-specific-items">
+                <!-- Dynamically generated list goes here -->
+            </div>
+        </div>
+        
+        <button id="btn-reset" class="btn-danger">Reset All Data</button>
+    </main>
+
+    <script src="app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js');
+            });
+        }
+    </script>
+</body>
+</html>
