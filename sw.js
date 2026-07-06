@@ -1,4 +1,4 @@
-const CACHE_NAME = 'trinity-g6-v1';
+const CACHE_NAME = 'trinity-g6-v2';
 const ASSETS = [
   './',
   './index.html',
